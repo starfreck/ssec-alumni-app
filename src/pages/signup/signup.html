@@ -1,0 +1,79 @@
+<!-- -->
+<ion-content padding class="animated fadeIn signup auth-page">
+  <div class="login-content">
+
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      
+      <h2 ion-text class="text-primary white">
+            <strong>SSEC</strong> ALUMNI
+      </h2>
+      <div class="logo">
+          <img height="40%" width="40%" src="assets/imgs/icon.png">
+          <!--<ion-img height="40%" width="40%" src="assets/imgs/icon.png"></ion-img>-->
+      </div>
+      
+    </div>
+
+    <!-- Login form -->
+    <form class="list-form">
+      <ion-item class="top-border">
+        <ion-label floating>
+          <ion-icon name="person" class="text-primary"></ion-icon>
+          Full Name (Eg. Kamlesh Patil)
+        </ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="mail" class="text-primary"></ion-icon>
+          E-mail
+        </ion-label>
+        <ion-input type="email"></ion-input>
+      </ion-item>
+
+      <ion-item class="bottom-border">
+        <ion-label floating>
+          <ion-icon name="lock" class="text-primary"></ion-icon>
+          Password
+        </ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+    </form>
+
+    <div margin-top>
+      <button ion-button block tappable (click)="register()">
+        SIGN UP
+      </button>
+
+      <p text-center ion-text>Or Sign Up with:</p>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-facebook">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-twitter">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-gplus">
+              <ion-icon name="logo-googleplus"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span ion-text tappable (click)="login()">I have an account</span>
+    </div>
+
+  </div>
+</ion-content>

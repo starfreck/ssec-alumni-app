@@ -1,0 +1,53 @@
+page-signup,
+.signup {
+
+    .scroll-content {
+
+        align-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+    }
+
+    ion-item {
+        box-shadow: none;
+        background: rgba(0,0,0,0.5);
+        color: azure;
+    }
+
+    
+
+    .top-border {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .bottom-border {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .btn-facebook {
+       background-color:#3B5998;
+    }
+
+    .btn-twitter {
+        background-color:#1DA1F2;
+     }
+
+     .btn-gplus {
+        background-color:#DB4437;
+     }
+
+     ion-content {
+        background-image:url(../assets/imgs/slider.png);
+        background-position: center;
+    }
+
+    p,span,.white {
+        color: azure;
+    }
+
+}
