@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
 import { LoginPage } from '../pages/login/login';
+import { LogoutPage } from '../pages/logout/logout';
 import { SignupPage } from '../pages/signup/signup';
 import { SearchPage } from '../pages/search/search';
 import { ProfilePage } from '../pages/profile/profile';
@@ -14,11 +15,15 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from "angularfire2/auth";
+import { FIREBASE_CONFIG } from './app.firebase.config';
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
     LoginPage,
+    LogoutPage,
     SignupPage,
     HomePage,
     SearchPage,
@@ -27,13 +32,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     AboutPage,
     LoginPage,
+    LogoutPage,
     SignupPage,
     SearchPage,
     ProfilePage,

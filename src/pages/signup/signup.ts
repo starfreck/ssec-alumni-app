@@ -1,7 +1,9 @@
 import {Component} from "@angular/core";
-import {NavController} from "ionic-angular";
+import {NavController,ToastController} from "ionic-angular";
 import {LoginPage} from "../login/login";
-import { TabsPage } from "../tabs/tabs";
+import { User } from "../../app/models/user";
+
+import { AngularFireAuthModule, AngularFireAuth } from "angularfire2/auth";
 
 
 @Component({
@@ -10,12 +12,28 @@ import { TabsPage } from "../tabs/tabs";
 })
 export class SignupPage {
 
-  constructor(public nav: NavController) {
+  user = {} as User;
+
+  constructor(private afAuth: AngularFireAuth,private toast:ToastController, public nav: NavController) {
   }
 
   // register and go to home page
-  register() {
-    this.nav.setRoot(TabsPage);
+  async register(user : User) {
+    try{
+      const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.password);
+      console.log(result);
+      if(result){
+        this.toast.create({
+          message: 'Signup Successfully...',
+          duration:3000
+        }).present();
+        this.nav.setRoot(LoginPage);
+      }
+    }
+    catch(e){
+      console.error(e);
+    }
+    
   }
 
   // go to login page

@@ -1,4 +1,3 @@
-<!-- -->
 <ion-content padding class="animated fadeIn signup auth-page">
   <div class="login-content">
 
@@ -6,7 +5,7 @@
     <div padding-horizontal text-center class="animated fadeInDown">
       
       <h2 ion-text class="text-primary white">
-            <strong>SSEC</strong> ALUMNI
+            <strong>SSGEC</strong> ALUMNI
       </h2>
       <div class="logo">
           <img height="40%" width="40%" src="assets/imgs/icon.png">
@@ -19,18 +18,10 @@
     <form class="list-form">
       <ion-item class="top-border">
         <ion-label floating>
-          <ion-icon name="person" class="text-primary"></ion-icon>
-          Full Name (Eg. Kamlesh Patil)
-        </ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating>
           <ion-icon name="mail" class="text-primary"></ion-icon>
           E-mail
         </ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input type="email" name="email" [(ngModel)]="user.email"></ion-input>
       </ion-item>
 
       <ion-item class="bottom-border">
@@ -38,12 +29,14 @@
           <ion-icon name="lock" class="text-primary"></ion-icon>
           Password
         </ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" name="password" [(ngModel)]="user.password"></ion-input>
       </ion-item>
     </form>
 
+    <p class="br">\n</p>
+
     <div margin-top>
-      <button ion-button block tappable (click)="register()">
+      <button ion-button block tappable (click)="register(user)">
         SIGN UP
       </button>
 

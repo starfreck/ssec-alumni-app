@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, ToastController } from "ionic-angular";
 import { SignupPage } from "../signup/signup";
 import { TabsPage } from "../tabs/tabs";
+import { User } from '../../app/models/user';
+
+import { AngularFireAuth  } from "angularfire2/auth";
 
 @Component({
   selector: 'page-login',
@@ -10,18 +13,40 @@ import { TabsPage } from "../tabs/tabs";
 })
 export class LoginPage {
 
-  constructor(public nav: NavController, public forgotCtrl: AlertController, public toastCtrl: ToastController) {
+  user = {} as User;
+
+  constructor(private afAuth:AngularFireAuth , public nav: NavController, public forgotCtrl: AlertController, public toast: ToastController) {
+    
+  }
+
+  // login and go to home page
+  async login(user : User) {
+    try{
+      const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email,user.password);
+      console.log(result);
+      if(result){
+        this.nav.setRoot(TabsPage);
+      }
+      else{
+        this.toast.create({
+          message: 'Invalid login details please try again...',
+          duration:3000
+        }).present();
+      }
+    }
+    catch(e){
+      console.error(e);
+      this.toast.create({
+        message: 'Invalid login details please try again...',
+        duration:3000
+      }).present();
+    }
     
   }
 
   // go to register page
-  signup() {
+  register() {
     this.nav.setRoot(SignupPage);
-  }
-
-  // login and go to home page
-  login() {
-    this.nav.setRoot(TabsPage);
   }
 
   forgotPass() {
@@ -46,7 +71,7 @@ export class LoginPage {
           text: 'Send',
           handler: data => {
             console.log('Send clicked');
-            let toast = this.toastCtrl.create({
+            let toast = this.toast.create({
               message: 'Email was sended successfully',
               duration: 3000,
               position: 'top',

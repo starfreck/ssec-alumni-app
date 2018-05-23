@@ -1,17 +1,112 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark">
+    <ion-buttons left>
+          <button ion-button icon-only (click)="about()">
+            <ion-icon name='add-circle'></ion-icon>
+          </button>
+    </ion-buttons>
     <ion-title class="header-font">Profile</ion-title>
+    <ion-buttons right>
+        <button ion-button icon-only (click)="about()">
+          <ion-icon name='information-circle'></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content padding style="background-color:#00A0DC;" class="animated fadeIn profile auth-page">
+    <div>
+      <ion-item class="profile-item top-border">
+        <div class="profile-picture big-profile-picture">
+          <img src="http://pyhomeautomation.uphero.com/img/team/2.jpg">
+        </div>
+        <h2 class="profile-name dark">Vasu Ratanpara</h2>
+        <div class="profile-info">Batch 2018 Passout</div>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="mail" class="text-primary"></ion-icon>
+          E-mail
+        </ion-label>
+        <ion-input type="email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="at" class="text-primary"></ion-icon>
+          username
+        </ion-label>
+        <ion-input type="text" name="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="finger-print" class="text-primary"></ion-icon>
+          Enrollment no.
+        </ion-label>
+        <ion-input type="number" name="enrollment"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="trophy" class="text-primary"></ion-icon>
+          Year Of Passing
+        </ion-label>
+        <ion-input type="number" name="year_of_passing"></ion-input>
+      </ion-item>
+
+      <ion-list radio-group [(ngModel)]="Gender">
+
+        <ion-list-header>
+          Gender
+        </ion-list-header>
+      
+        <ion-item>
+          <ion-label>Male</ion-label>
+          <ion-radio value="Male"></ion-radio>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>Female</ion-label>
+          <ion-radio value="Female"></ion-radio>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="briefcase" class="text-primary"></ion-icon>
+          Current City
+        </ion-label>
+        <ion-input type="text" name="current_city"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="home" class="text-primary"></ion-icon>
+          Home City
+        </ion-label>
+        <ion-input type="text" name="home_city"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="map" class="text-primary"></ion-icon>
+          Address
+        </ion-label>
+        <ion-input type="text" name="paw"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="pin" class="text-primary"></ion-icon>
+          Pincode
+        </ion-label>
+        <ion-input type="number" name="paw"></ion-input>
+      </ion-item>
+
+
+      <ion-item class="profile-item bottom-border"></ion-item>
+
+    </div>
 </ion-content>

@@ -1,9 +1,66 @@
-page-profile {
+page-profile,
+.profile {
     
+    .scroll-content {
+
+        align-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+    }
+
     .header-font{
 
         font-family: unset;
         text-align: center;
+    }
+
+    .top-border {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .bottom-border {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    ion-item ion-list-header {
+        box-shadow: none;
+        background: rgba(0,0,0,0.5);
+        color: azure;
+    }
+
+    .profile-item {
+        text-align: center;
+    }
+      
+    .profile-picture {
+        border: 3px solid rgba(0, 0, 0, 0.25);
+        border-color: skyblue;
+        padding: 3px;
+        border-radius: 100%;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        margin: 0 auto;
+        width: 128px;
+        height: 128px;
+        overflow: hidden;
+    }
+      
+    .profile-picture img {
+        width: 128px;
+        border-radius: 100%;
+    }
+      
+    .profile-name {
+        padding-top: 20px;
+        font-size: x-large !important;
+        font-weight: bold !important;
+        text-transform: capitalize;
     }
 
 }

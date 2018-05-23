@@ -22,7 +22,7 @@
           <ion-icon name="mail" class="text-primary"></ion-icon>
           E-mail
         </ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input type="email" name="email" [(ngModel)]="user.email"></ion-input>
       </ion-item>
 
       <ion-item class="bottom-border">
@@ -30,14 +30,14 @@
           <ion-icon name="lock" class="text-primary"></ion-icon>
           Password
         </ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" name="password" [(ngModel)]="user.password"></ion-input>
       </ion-item>
     </form>
 
     <p text-center ion-text tappable (click)="forgotPass()"><strong>Forgot Password?</strong></p>
 
     <div>
-      <button ion-button icon-start block tappable (click)="login()">
+      <button ion-button icon-start block tappable (click)="login(user)">
         <ion-icon name="log-in"></ion-icon>
         SIGN IN
       </button>
@@ -69,7 +69,7 @@
 
     <!-- Other links -->
     <div text-center margin-top>
-      <span ion-text tappable (click)="signup()">New here? <strong>Sign up</strong></span>
+      <span ion-text tappable (click)="register()">New here? <strong>Sign up</strong></span>
     </div>
 
   </div>
