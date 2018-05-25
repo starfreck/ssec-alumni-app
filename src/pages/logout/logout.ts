@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, ToastController} from 'ionic-angular';
 import { LoginPage } from '../login/login';
 
-import { AngularFireAuth } from "angularfire2/auth";
+import { AuthService } from '../../services/auth.service';
+
 
 /**
  * Generated class for the LogoutPage page.
@@ -17,23 +18,19 @@ import { AngularFireAuth } from "angularfire2/auth";
 })
 export class LogoutPage {
 
-  constructor(private afAuth:AngularFireAuth, private toast:ToastController, public navCtrl: NavController) {
+  constructor(private auth: AuthService,private toast:ToastController, public nav: NavController) {
 
   }
 
   ionViewDidLoad() {
     
     this.toast.create({
-      message:'you are logging out...',
-      duration : 2000
+      message:'Logged out...',
+      duration:2000
     }).present();
 
-    this.afAuth.auth.signOut();
-    this.navCtrl.setRoot(LoginPage);
-    //this.navCtrl.po
-    //var nav = this.app.getRootNav();
-    //nav.setRoot(LoginPage);
-
+    this.auth.signOut();
+    this.nav.setRoot(LoginPage);
   }
 
 }

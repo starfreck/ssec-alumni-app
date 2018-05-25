@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
-
-
-import { AngularFireAuth } from "angularfire2/auth";
+import { NavController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 
 @Component({
@@ -12,7 +9,7 @@ import { AboutPage } from '../about/about';
 
 export class HomePage {
 
-  constructor(private afAuth:AngularFireAuth, public navCtrl: NavController, private toast:ToastController) {
+  constructor(public navCtrl: NavController) {
 
   }
 

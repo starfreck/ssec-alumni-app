@@ -1,4 +1,5 @@
-page-search {
+page-search,
+.search {
 
     .header-font{
 
@@ -6,4 +7,12 @@ page-search {
         text-align: center;
     }
 
+    ion-input,
+	ion-input::placeholder {
+		color: #fff;
+	}
+
+    .big-font {
+        font-size: 125%;
+    }
 }

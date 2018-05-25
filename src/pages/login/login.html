@@ -57,7 +57,7 @@
             </button>
           </ion-col>
           <ion-col col-4>
-            <button ion-button icon-only color="danger" block class="btn-gplus">
+            <button ion-button icon-only color="danger" block class="btn-gplus" (click)="loginWithGoogle()">
               <ion-icon name="logo-googleplus"></ion-icon>
             </button>
           </ion-col>
@@ -69,7 +69,7 @@
 
     <!-- Other links -->
     <div text-center margin-top>
-      <span ion-text tappable (click)="register()">New here? <strong>Sign up</strong></span>
+      <span ion-text tappable (click)="signup()">New here? <strong>Sign up</strong></span>
     </div>
 
   </div>

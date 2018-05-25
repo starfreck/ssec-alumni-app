@@ -4,8 +4,6 @@ page-profile,
     .scroll-content {
 
         align-content: center;
-        display: flex;
-        flex-direction: column;
         justify-content: center;
         text-align: center;
 
@@ -27,10 +25,17 @@ page-profile,
         border-bottom-right-radius: 5px;
     }
 
-    ion-item ion-list-header {
+    ion-item, ion-list-header {
         box-shadow: none;
         background: rgba(0,0,0,0.5);
         color: azure;
+    }
+
+    ion-content{
+        background-color:#00A0DC;
+        background-image:url(../assets/imgs/slider.png);
+        background-position: center;
+        
     }
 
     .profile-item {

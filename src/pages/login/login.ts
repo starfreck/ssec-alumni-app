@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-
-import { NavController, AlertController, ToastController } from "ionic-angular";
+import { NavController, AlertController, ToastController, LoadingController, Platform } from "ionic-angular";
 import { SignupPage } from "../signup/signup";
-import { TabsPage } from "../tabs/tabs";
-import { User } from '../../app/models/user';
 
-import { AngularFireAuth  } from "angularfire2/auth";
+
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user';
+import { ProfilePage } from '../profile/profile';
+import { TabsPage } from '../tabs/tabs';
+
+
 
 @Component({
   selector: 'page-login',
@@ -15,19 +18,55 @@ export class LoginPage {
 
   user = {} as User;
 
-  constructor(private afAuth:AngularFireAuth , public nav: NavController, public forgotCtrl: AlertController, public toast: ToastController) {
+  constructor(private auth: AuthService, public loadingCtrl: LoadingController, public nav: NavController, public forgotCtrl: AlertController, public toast: ToastController) {
     
   }
 
   // login and go to home page
   async login(user : User) {
+
+    let loading = this.loadingCtrl.create({
+      content: 'Logging Please wait...'
+    });
+
+    if (!user.email) {
+     
+      this.toast.create({
+        message: 'Enter E-mail address...',
+        duration:2000
+      }).present();
+      return;
+      
+    }
+
+    if (!user.password) {
+     
+      this.toast.create({
+        message: 'Enter Password...',
+        duration:2000
+      }).present();
+      return;
+      
+    }
+
     try{
-      const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email,user.password);
+
+      loading.present();
+
+      let credentials = {
+        email: user.email,
+        password: user.password
+      };
+
+      const result = await this.auth.signInWithEmail(credentials);
       console.log(result);
+
       if(result){
-        this.nav.setRoot(TabsPage);
+        loading.dismiss();
+        this.nav.setRoot(ProfilePage);
       }
       else{
+        loading.dismiss();
         this.toast.create({
           message: 'Invalid login details please try again...',
           duration:3000
@@ -35,9 +74,13 @@ export class LoginPage {
       }
     }
     catch(e){
+
+      loading.dismiss();
+
       console.error(e);
+
       this.toast.create({
-        message: 'Invalid login details please try again...',
+        message: e.message,
         duration:3000
       }).present();
     }
@@ -45,7 +88,7 @@ export class LoginPage {
   }
 
   // go to register page
-  register() {
+  signup() {
     this.nav.setRoot(SignupPage);
   }
 
@@ -85,6 +128,14 @@ export class LoginPage {
       ]
     });
     forgot.present();
+  }
+
+  loginWithGoogle() {
+    this.auth.signInWithGoogle()
+      .then(
+        () => this.nav.setRoot(TabsPage),
+        error => console.log(error.message)
+      );
   }
 
 }
