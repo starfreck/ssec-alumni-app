@@ -1,16 +1,15 @@
-import {Component} from "@angular/core";
-import {NavController, NavParams} from "ionic-angular";
-import {Storage} from '@ionic/storage';
-
-// import {SearchCarsPage} from "../search-cars/search-cars";
+import { Component } from "@angular/core";
+import { NavController, NavParams } from "ionic-angular";
+import { Storage } from '@ionic/storage';
+import { AboutPage } from "../about/about";
 
 @Component({
-  selector: 'page-search-location',
-  templateUrl: 'search-location.html'
+  selector: 'page-search',
+  templateUrl: 'search.html'
 })
-
-export class SearchLocationPage {
-  public fromto: any;
+export class SearchPage {
+  
+  public fromto : any;
   // places
   public places = {
     nearby: [
@@ -63,4 +62,9 @@ export class SearchLocationPage {
     // this.nav.push(SearchCarsPage);
     this.nav.pop();
   }
+
+  about(){
+    this.nav.push(AboutPage);  
+  }
+
 }
